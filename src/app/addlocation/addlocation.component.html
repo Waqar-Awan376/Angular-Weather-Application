@@ -1,0 +1,20 @@
+<h1 class="text-center my-5 text-white">Add Location</h1>
+<div class="container my-4">
+  <div class="card w-100" style="width: 18rem;">
+    <div class="card-body shadow-lg rounded p-3">
+      <div class="container p-3">
+        <form (ngSubmit)="addLocation(f)" #f='ngForm'>
+        <div class="mb-3 text-center">
+          <label for="zipCode" class="form-label fs-3 mb-4">Zip Code</label>
+          <div class="w-50 m-auto">
+            <input type="number" class="form-control" id="zipCode" name="loc_zipcode" ngModel required #loc_zipcode='ngModel' placeholder="Please enter the Zip Code">
+          </div>
+        </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="{{'btn btn-outline-success w-25 '+(f.invalid?'disabled':'')}}">Add Zipcode</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

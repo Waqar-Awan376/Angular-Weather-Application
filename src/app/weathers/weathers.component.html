@@ -1,0 +1,39 @@
+<h1 class="text-center my-5 text-white">Weathers</h1>
+<div class="container my-4">
+  <div class="card w-100 my-4 p-4" style="width: 18rem;" *ngIf="weatherData.weatherData.length===0">
+    <h2 class="text-center text-muted">No Location Added Yet</h2>
+  </div>
+
+  <div class="card w-100 my-4 p-4" style="width: 18rem;" *ngFor="let weather of weatherData.weatherData;let i=index">
+    <div class="d-flex justify-content-end" (click)="removeWeather(i)">
+      <span class="close"></span>
+    </div>
+    <div class="text-center">
+      <img *ngIf="weather.weather[0].main.toLowerCase()==='clouds'" src="https://www.angulartraining.com/images/weather/clouds.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-200px">
+      <img *ngIf="weather.weather[0].main.toLowerCase()==='rain'" src="https://www.angulartraining.com/images/weather/rain.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-200px">
+      <img *ngIf="weather.weather[0].main.toLowerCase()==='snow'" src="https://www.angulartraining.com/images/weather/snow.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-200px">
+      <img *ngIf="weather.weather[0].main.toLowerCase()==='sun' || weather.weather[0].main.toLowerCase()==='clear'" src="https://www.angulartraining.com/images/weather/sun.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-200px">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{weather.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b>Current Condition: </b><span>{{weather.weather[0].main}}</span>
+      </li>
+      <li class="list-group-item">
+        <b>Temperature: </b><span>{{weather.main.temp}}</span>
+      </li>
+      <li class="list-group-item">
+        <b>Max Today: </b><span>{{weather.main.temp_max}}</span>
+      </li>
+      <li class="list-group-item">
+        <b>Min Today: </b><span>{{weather.main.temp_min}}</span>
+      </li>
+    </ul>
+    <div class="card-body d-flex justify-content-end">
+      <a routerLink="{{'/forecast/'+weather.zipcode}}" class="btn btn-success">Check 5 Day Forecast</a>
+    </div>
+  </div>
+
+</div>

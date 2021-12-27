@@ -1,0 +1,34 @@
+<h1 class="text-center my-5 text-white">Daily Forecast</h1>
+<div class="container">
+  <div class="mb-3 text-center">
+    <a class="btn btn-success" routerLink="/">Go Back</a>
+  </div>
+  <div class="mb-3 text-center text-white">
+    <h2>{{reqCityName}}({{reqZipCode}})</h2>
+  </div>
+  <table class="table table-hover bg-white text-center">
+    <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Condition</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let weather of reqWeatherData" class="daily-forecast-tr">
+      <th>{{weather.dayName}}</th>
+      <td>{{weather.condition}}</td>
+      <td>{{weather.maxTemp}} &#8457;</td>
+      <td>{{weather.minTemp}} &#8457;</td>
+      <td>
+        <img *ngIf="weather.condition.toLowerCase()==='clouds'" src="https://www.angulartraining.com/images/weather/clouds.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-70px">
+        <img *ngIf="weather.condition.toLowerCase()==='rain'" src="https://www.angulartraining.com/images/weather/rain.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-70px">
+        <img *ngIf="weather.condition.toLowerCase()==='snow'" src="https://www.angulartraining.com/images/weather/snow.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-70px">
+        <img *ngIf="weather.condition.toLowerCase()==='sun' || weather.condition.toLowerCase()==='clear'" src="https://www.angulartraining.com/images/weather/sun.png" class="card-img-top" alt="WEATHER_IMAGE" class="width-70px">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
